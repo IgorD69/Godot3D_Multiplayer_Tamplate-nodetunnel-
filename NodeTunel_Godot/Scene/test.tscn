@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bqrr1gddlv4f6" path="res://Scripts/ChunkSystem/ChunkSystem.gd" id="1_o6ksy"]
 [ext_resource type="ArrayMesh" uid="uid://r2imjo7o2734" path="res://Models/Vegetation/stylizedGrassMeshes/grass2.res" id="2_1i1hv"]
 [ext_resource type="PackedScene" uid="uid://bb3qcv0kbqbo6" path="res://Scene/Player.tscn" id="3_vrsyt"]
-[ext_resource type="Texture2D" uid="uid://le1l24fxe4fd" path="res://Models/Mouse_0.png" id="4_asc4v"]
+[ext_resource type="PackedScene" uid="uid://cuixqud3u4ur4" path="res://objects/cube.tscn" id="5_1i1hv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_asc4v"]
 sky_top_color = Color(0.823885, 0.41672873, 0.6455404, 1)
@@ -24,7 +24,6 @@ glow_enabled = true
 albedo_texture = ExtResource("1_37kl0")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wf6tq"]
-albedo_texture = ExtResource("4_asc4v")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_puuaq"]
 _surfaces = [{
@@ -80,3 +79,6 @@ shape = SubResource("ConcavePolygonShape3D_1i1hv")
 
 [node name="Player" parent="." instance=ExtResource("3_vrsyt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.925152, 1, 96.965126)
+
+[node name="Cube" parent="." instance=ExtResource("5_1i1hv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.469112, 0.9999999, 94.82883)

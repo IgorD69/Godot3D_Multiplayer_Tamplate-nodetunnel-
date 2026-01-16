@@ -1,7 +1,20 @@
 res://addons/nodetunnel/demo/player/node_tunnel_demo_player.tscn::6dc9b1f8d77c22d1c10f1e72bc32e555::1768298763::res://.godot/exported/133200997/export-cf065d35523d5801c89a8abb4dd36ec0-node_tunnel_demo_player.scn
-res://addons/nodetunnel/demo/node_tunnel_demo.tscn::6e9e43cb5abb34b480608d63fbc11713::1768388381::res://.godot/exported/133200997/export-15b8b7faded56331b7587f8ed051203c-node_tunnel_demo.scn
-res://Scene/map.tscn::829c8b4ba8dff6022ae207ef25601439::1768298763::res://.godot/exported/133200997/export-608b5cd7e185dcc883040a739bfab051-map.scn
-res://Scene/Player.tscn::ecc8042fe112484c48dff9482bfd1937::1768389685::res://.godot/exported/133200997/export-2967cbd809dd58ca10de051e59480961-Player.scn
-res://Scene/PortalGun.tscn::2f47bd49e6e8fb0df426baefa45c97e1::1768304440::res://.godot/exported/133200997/export-bb4d7ef3256de6f7b0817c6db37105ee-PortalGun.scn
-res://Scene/test.tscn::40473bae298b1b64b65584b352424e13::1768386627::res://.godot/exported/133200997/export-0be56f45ead8e77bf48322ac61cb00a7-test.scn
+res://addons/nodetunnel/demo/node_tunnel_demo.tscn::8dc06bd0b325577fe460e8bd7575672a::1768567989::res://.godot/exported/133200997/export-15b8b7faded56331b7587f8ed051203c-node_tunnel_demo.scn
+res://Scene/map.tscn::453bf5edb0133560176fa5c88209aadb::1768566988::res://.godot/exported/133200997/export-608b5cd7e185dcc883040a739bfab051-map.scn
+res://Scene/Player.tscn::8a5f43452be887e86b12c1ef80951d0f::1768567586::res://.godot/exported/133200997/export-2967cbd809dd58ca10de051e59480961-Player.scn
+res://Scene/PortalGun.tscn::96339e023af57c1dc1d55b8fb555fe2c::1768411071::res://.godot/exported/133200997/export-bb4d7ef3256de6f7b0817c6db37105ee-PortalGun.scn
+res://Scene/test.tscn::26cc00bff576c2638dc955db0dafaa22::1768507496::res://.godot/exported/133200997/export-0be56f45ead8e77bf48322ac61cb00a7-test.scn
 res://Scene/test_player.tscn::2808c95f21fda326cd6cdab92bb099b6::1768386527::res://.godot/exported/133200997/export-d738864deb2495626754edf89c12658c-test_player.scn
+res://Models/Mixamo BoneMap.tres::f99377c0bf2d2bf0c9902d27cc300ba4::1768405208::res://.godot/exported/133200997/export-aa27fbd808a8050463846551b51f4ffd-Mixamo BoneMap.res
+res://addons/ambientcg/gui/ambient_ui/ambient_ui.tscn::2137dad3ff115ba8b962c9b7e67b27e7::1768509889::res://.godot/exported/133200997/export-dd4733c5b1f92805db66f05fbe04db4f-ambient_ui.scn
+res://addons/ambientcg/gui/browser_widget/browser_widget.tscn::5a2fa2c10cc9b0d8194619680f0ea874::1768509889::res://.godot/exported/133200997/export-8cbde529e874ab83ff22222120e49b2f-browser_widget.scn
+res://addons/ambientcg/gui/download_window/download_window.tscn::12510a86747d92a54b8fe488bb2de0d2::1768509889::res://.godot/exported/133200997/export-d7d376ca8eea556421871d6b47be1dc9-download_window.scn
+res://AmbientCG/Extracted/Concrete047A_2K-JPG.tres::15bd766ea19464c6edffffed228d10ac::1768509932::res://.godot/exported/133200997/export-f7dec29e6e362e772afc0e271417c70e-Concrete047A_2K-JPG.res
+res://AmbientCG/Extracted/Pizza001_1K-JPG.tres::182082d573174e28c200e9f94a9a5b67::1768509984::res://.godot/exported/133200997/export-a739d549fbadf458306adfd8f2c4e96e-Pizza001_1K-JPG.res
+res://interaction/interaction_component.tscn::a20f4442fa5f313a7d01dbfb6c0a3d6b::1768563242::res://.godot/exported/133200997/export-926ba1a37203da0a0b8140cfa7560971-interaction_component.scn
+res://interaction/Interaction_controller.tscn::d10fb6f936dcdc94ca4c0cf6ea1925b7::1768039291::res://.godot/exported/133200997/export-41e0db8de33bdea16c7a1bee429d54a5-Interaction_controller.scn
+res://objects/cube.tscn::95cd382a7ce037d674ff3f019e9b72ea::1768567113::res://.godot/exported/133200997/export-7346586a53bd3127f8e409543e31b909-cube.scn
+res://objects/door.tscn::5cc8f92b157ae4160577994645f458fa::1768511720::res://.godot/exported/133200997/export-4d35b6806538f9d7f1eabac087f24885-door.scn
+res://objects/Ball.tscn::46e4c815f99a7e45bea3436f1b846ceb::1768567438::res://.godot/exported/133200997/export-7183c9ef61bab954c9f593b8f0700052-Ball.scn
+res://objects/Button.tscn::675a0bd419bd31c456937ee9c76994b6::1768553993::res://.godot/exported/133200997/export-96d7549e67edef51d6c93f85da994d40-Button.scn
+res://Scene/TestMap.tscn::34be70a20b4f8ad57fd8fd6142236c36::1768564219::res://.godot/exported/133200997/export-7ad1a497c72ed6fbfb6324791d07e53a-TestMap.scn

@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://cuixqud3u4ur4"]
+
+[ext_resource type="Material" path="res://AmbientCG/Extracted/Pizza001_1K-JPG.tres" id="1_4cycn"]
+[ext_resource type="PackedScene" uid="uid://batts1x68a3ii" path="res://interaction/interaction_component.tscn" id="1_7xen6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_coehn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0wo55"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_7xen6"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:linear_velocity")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[node name="Cube" type="RigidBody3D"]
+mass = 3.0
+continuous_cd = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_4cycn")
+mesh = SubResource("BoxMesh_coehn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_0wo55")
+
+[node name="InteractionComponent" parent="." node_paths=PackedStringArray("object_referance", "pivit_point") instance=ExtResource("1_7xen6")]
+object_referance = NodePath("..")
+interaction_type = 0
+maximum_rotation = 110.0
+pivit_point = NodePath("..")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_7xen6")

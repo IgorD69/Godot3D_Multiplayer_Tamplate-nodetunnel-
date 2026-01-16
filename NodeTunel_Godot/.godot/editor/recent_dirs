@@ -1,8 +1,9 @@
-res://Scene
-res://Models
-res://
-res://Scene/testMouse
-res://Scripts/ChunkSystem
-res://Scripts
 /home/igor/Desktop
+res://Scene
+res://Shaders
+res://Scripts
+res://objects
+res://
+res://Models
+res://Scripts/ChunkSystem
 res://addons/nodetunnel/demo

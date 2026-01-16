@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://batts1x68a3ii"]
+
+[ext_resource type="Script" uid="uid://dj2jq8271tarf" path="res://interaction/interaction_component.gd" id="1_wutrw"]
+
+[node name="InteractionComponent" type="Node"]
+script = ExtResource("1_wutrw")
+interaction_type = null
+maximum_rotation = null

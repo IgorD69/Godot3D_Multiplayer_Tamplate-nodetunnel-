@@ -290,12 +290,12 @@ static func _log(message: String) -> void:
 ## [b]Do not call this method directly![/b]
 static func _log_warning(message: String) -> void:
 	if debug_enabled:
-		push_warning("[NodeTunnel] " + message)
+		print("[NodeTunnel] " + message)
 
 ## WARNING: Internal NodeTunnel Code
 ## [b]Do not call this method directly![/b]
 static func _log_error(message: String) -> void:
-	push_error("[NodeTunnel] " + message)
+	print("[NodeTunnel] " + message)
 
 # ============================================================================
 # MULTIPLAYER PEER EXTENSION IMPLEMENTATION

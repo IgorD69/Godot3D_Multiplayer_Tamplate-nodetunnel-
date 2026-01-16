@@ -1,6 +1,6 @@
-res://Scene/Player.tscn
-res://addons/nodetunnel/demo/node_tunnel_demo.gd
 res://addons/nodetunnel/demo/node_tunnel_demo.tscn
-res://Scene/map.tscn
-res://Scene/PortalGun.tscn
-res://Scripts/player.gd
+res://Shaders/PlayerPosteraziation.gdshader
+res://interaction/interaction_component.gd
+res://objects/Ball.tscn
+res://objects/cube.tscn
+res://interaction/interaction_component(Save).gd

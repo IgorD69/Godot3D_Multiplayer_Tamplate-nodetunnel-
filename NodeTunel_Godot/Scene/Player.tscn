@@ -1,11 +1,13 @@
-[gd_scene load_steps=35 format=4 uid="uid://bb3qcv0kbqbo6"]
+[gd_scene load_steps=40 format=4 uid="uid://bb3qcv0kbqbo6"]
 
 [ext_resource type="Script" uid="uid://bvhlyx4xa1nmu" path="res://Scripts/player.gd" id="1_jvxg0"]
 [ext_resource type="Texture2D" uid="uid://dmis1cfxk4e6o" path="res://Models/ricks_portal_gun/textures/all_in_one_baseColor.png" id="3_3pik8"]
 [ext_resource type="Script" uid="uid://bma8n0jw4gipu" path="res://multiplayer_synchronizer.gd" id="3_fvocf"]
+[ext_resource type="Shader" uid="uid://bm7ucacba4cqh" path="res://Shaders/PlayerPosteraziation.gdshader" id="4_g1hv4"]
 [ext_resource type="Script" uid="uid://dvrdevqky5igc" path="res://Scripts/tab.gd" id="5_fvocf"]
 [ext_resource type="Texture2D" uid="uid://bwi7q5nr4lnu3" path="res://Models/MOUSE_0.png" id="5_pmp2f"]
 [ext_resource type="Script" uid="uid://hw8ff48sqp2b" path="res://Scripts/FPS.gd" id="6_pmp2f"]
+[ext_resource type="PackedScene" uid="uid://0vqe72ube683" path="res://interaction/Interaction_controller.tscn" id="8_adgam"]
 [ext_resource type="Animation" uid="uid://d26qiaspt20it" path="res://Scene/WalkExport.res" id="10_inyuv"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_fvocf"]
@@ -144,6 +146,21 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ulyux")
 
+[sub_resource type="Animation" id="Animation_0nuby"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Portal_Gun_Meshes:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5707964, 3.5527124e-15, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_p8enr"]
 resource_name = "Shoot"
 length = 0.693
@@ -160,35 +177,47 @@ tracks/0/keys = {
 "values": [Vector3(-1.5707964, 3.5527124e-15, 0), Vector3(-1.0471975, 3.1415925, -3.1415925), Vector3(-1.5707964, -2.8421716e-14, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_0nuby"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Portal_Gun_Meshes:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.5707964, 3.5527124e-15, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g2q3b"]
 _data = {
 &"RESET": SubResource("Animation_0nuby"),
 &"Shoot": SubResource("Animation_p8enr")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_adgam"]
+render_priority = 0
+shader = ExtResource("4_g1hv4")
+shader_parameter/zNear = 0.05
+shader_parameter/zFar = 100.0
+shader_parameter/enable_outline = true
+shader_parameter/outline_color = Color(0.029506553, 0.029506562, 0.029506536, 1)
+shader_parameter/outline_thickness = 0.2
+shader_parameter/enable_color_limit = true
+shader_parameter/color_levels = 16
+shader_parameter/enable_color_palette = false
+shader_parameter/color1 = Color(1, 0.925, 0.839, 1)
+shader_parameter/color2 = Color(1, 0.831, 0.639, 1)
+shader_parameter/color3 = Color(1, 0.667, 0.369, 1)
+shader_parameter/color4 = Color(0.816, 0.506, 0.349, 1)
+shader_parameter/color5 = Color(0.553, 0.412, 0.478, 1)
+shader_parameter/color6 = Color(0.329, 0.306, 0.408, 1)
+shader_parameter/color7 = Color(0.125, 0.236, 0.337, 1)
+shader_parameter/color8 = Color(0.05, 0.169, 0.271, 1)
+shader_parameter/enable_dithering = false
+shader_parameter/dither_strength = 0.710000033725
+
+[sub_resource type="QuadMesh" id="QuadMesh_adgam"]
+lightmap_size_hint = Vector2i(12, 12)
+material = SubResource("ShaderMaterial_adgam")
+flip_faces = true
+uv2_padding = 1.3
+size = Vector2(2, 2)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3pik8"]
 albedo_texture = ExtResource("5_pmp2f")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_adgam"]
-load_path = "res://.godot/imported/animationLybrary_0.png-edd58a29cdb0f1e7821e590675ca5f69.s3tc.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g1hv4"]
-load_path = "res://.godot/imported/animationLybrary_1.png-a1f9a6c5437b96259e380362622f53bc.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uran1"]
 resource_name = "Ch14_Body"
@@ -1702,7 +1731,9 @@ _data = {
 &"Walk": ExtResource("10_inyuv")
 }
 
-[node name="Player" type="CharacterBody3D"]
+[sub_resource type="QuadMesh" id="QuadMesh_g1hv4"]
+
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_jvxg0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -1749,6 +1780,29 @@ libraries = {
 &"": SubResource("AnimationLibrary_g2q3b")
 }
 speed_scale = 3.0
+
+[node name="InteractionRayCast" type="RayCast3D" parent="CameraPivot/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.020186007, 0.056571364)
+target_position = Vector3(0, 0, -2)
+debug_shape_custom_color = Color(0.0023790465, 0.0010110053, 0.0061349096, 1)
+debug_shape_thickness = 5
+
+[node name="hand" type="Marker3D" parent="CameraPivot/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="PostProces" type="MeshInstance3D" parent="CameraPivot/Camera3D"]
+transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, 0, 0, -0.7537614)
+cast_shadow = 0
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_adgam")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="CameraPivot/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.43121338)
+light_color = Color(0.9603656, 0.90479857, 0.70698804, 1)
+light_energy = 2.0
+shadow_enabled = true
+spot_range = 14.702765
+spot_angle = 39.79107
 
 [node name="TAB" type="CanvasLayer" parent="."]
 script = ExtResource("5_fvocf")
@@ -2129,7 +2183,7 @@ bones/15/bone_meta/extras = {
 "eulerOrder": "ZYX",
 "inheritType": 1.0,
 "parentMatrixWorld": {
-"elements": [1.0000000000000004, -7.523163845262643e-37, 2.1684043449710103e-19, 0.0, -8.648698754590241e-21, 0.9992042734817446, 0.03988508312413418, 0.0, -2.1666788881314159e-19, -0.03988508312413418, 0.9992042734817448, 0.0, 1.65945665742e-06, 3.64334981661316, 1.7101343e-09, 1.0]
+"elements": [1.0000000000000004, -7.523163845262643e-37, 2.1684043449710103e-19, 0.0, -8.648698754590241e-21, 0.9992042734817446, 0.03988508312413418, 0.0, -2.166678888131416e-19, -0.03988508312413418, 0.9992042734817448, 0.0, 1.65945665742e-06, 3.64334981661316, 1.7101343e-09, 1.0]
 },
 "preRotation": [-5.747366972400856, -1.987846675914698e-16, 0.0],
 "scale": [1.0000000000000002, 1.0, 1.0000000000000004],
@@ -2169,7 +2223,7 @@ bones/17/bone_meta/extras = {
 "eulerOrder": "ZYX",
 "inheritType": 1.0,
 "parentMatrixWorld": {
-"elements": [0.999769668635766, -0.02146181902660689, 2.981861253574525e-09, 0.0, 0.0214193119132391, 0.9977895412749472, 0.06290663239669962, 0.0, -0.00135009373534122, -0.0628921429623709, 0.9980194164446434, 0.0, -0.3279332639842105, 8.552532159788043, -0.29887967121624115, 1.0]
+"elements": [0.999769668635766, -0.02146181902660689, 2.9818612535745252e-09, 0.0, 0.0214193119132391, 0.9977895412749472, 0.06290663239669962, 0.0, -0.00135009373534122, -0.0628921429623709, 0.9980194164446434, 0.0, -0.3279332639842105, 8.552532159788043, -0.29887967121624115, 1.0]
 },
 "preRotation": [-4.69375068892701, -1.9878466759146982e-16, -3.975693351829397e-16],
 "scale": [1.0000000000000002, 1.0, 1.0000000000000004],
@@ -2248,7 +2302,7 @@ bones/21/bone_meta/extras = {
 "eulerOrder": "ZYX",
 "inheritType": 1.0,
 "parentMatrixWorld": {
-"elements": [1.0, 5.5511150000000004e-17, 3.85186e-34, 0.0, -5.539736057405585e-17, 0.997950129754508, -0.0639963946090751, 0.0, -3.55251353939962e-18, 0.0639963946090751, 0.997950129754508, 0.0, 0.00618121594493903, 3.1264304229472373, -2.034610702139616e-09, 1.0]
+"elements": [1.0, 5.551115e-17, 3.85186e-34, 0.0, -5.539736057405585e-17, 0.997950129754508, -0.0639963946090751, 0.0, -3.55251353939962e-18, 0.0639963946090751, 0.997950129754508, 0.0, 0.00618121594493903, 3.1264304229472373, -2.034610702139616e-09, 1.0]
 },
 "preRotation": [14.382888804473216, -1.9878466759146975e-16, 0.0],
 "scale": [1.0, 1.0000000000000002, 1.0000000000000002],
@@ -2271,7 +2325,7 @@ bones/22/bone_meta/extras = {
 "elements": [1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 8.729338779408699e-26, 0.0, 0.0, -8.729338779408699e-26, 1.0, 0.0, 0.0, 9.169606451166274, -4.7616666e-09, 1.0]
 },
 "preRotation": [-71.39534733777609, -89.73959136126125, -179.89313282170875],
-"rotation": [1.0985959e-14, -1.5902773e-15, 1.9878467e-16],
+"rotation": [1.0985959e-14, -1.5902773e-15, 1.9878467000000002e-16],
 "scale": [0.9999999999999996, 1.0000000000000002, 1.0000000000000002],
 "translation": [-4.3921556, 8.82612231248332, -0.0198875794923995]
 }
@@ -2429,7 +2483,7 @@ bones/30/bone_meta/extras = {
 "eulerOrder": "ZYX",
 "inheritType": 1.0,
 "parentMatrixWorld": {
-"elements": [0.9489714619799936, -0.3153619576733275, 6.176449607840635e-10, 0.0, 0.3153618007464171, 0.9489709897653218, 0.00099760403093471, 0.0, -0.00031460694630552, -0.00094669756093162, 0.999999502392975, 0.0, 2.8795333307867437, 8.814240971366793, 0.01176431865908966, 1.0]
+"elements": [0.9489714619799936, -0.3153619576733275, 6.17644960784063e-10, 0.0, 0.3153618007464171, 0.9489709897653218, 0.00099760403093471, 0.0, -0.00031460694630552, -0.00094669756093162, 0.999999502392975, 0.0, 2.8795333307867437, 8.814240971366793, 0.01176431865908966, 1.0]
 },
 "preRotation": [-1.2573952316351322, 1.9878466759146975e-16, 0.0],
 "scale": [1.0, 1.0, 0.9999999999999998],
@@ -2449,7 +2503,7 @@ bones/31/bone_meta/extras = {
 "eulerOrder": "ZYX",
 "inheritType": 1.0,
 "parentMatrixWorld": {
-"elements": [1.0, 1.2037061999999999e-35, -3.4694469519536134e-18, 0.0, -7.613328466978056e-20, 0.9997592030801176, -0.0219439252780362, 0.0, 3.4686115198138867e-18, 0.0219439252780362, 0.9997592030801176, 0.0, -0.00083120268305059, 3.537454603125248, -1.826379e-08, 1.0]
+"elements": [1.0, 1.2037062e-35, -3.4694469519536134e-18, 0.0, -7.613328466978056e-20, 0.9997592030801176, -0.0219439252780362, 0.0, 3.4686115198138867e-18, 0.0219439252780362, 0.9997592030801176, 0.0, -0.00083120268305059, 3.537454603125248, -1.826379e-08, 1.0]
 },
 "preRotation": [-2.5479795186022893, 4.969616689786744e-17, 0.0],
 "scale": [1.0, 1.0, 1.0000000000000002],
@@ -2827,7 +2881,7 @@ metadata/extras = {
 "eulerOrder": "ZYX",
 "inheritType": 1.0,
 "parentMatrixWorld": {
-"elements": [1.0000000000000004, -7.523163845262643e-37, 2.1684043449710103e-19, 0.0, -8.648698754590241e-21, 0.9992042734817446, 0.03988508312413418, 0.0, -2.1666788881314159e-19, -0.03988508312413418, 0.9992042734817448, 0.0, 1.65945665742e-06, 3.64334981661316, 1.7101343e-09, 1.0]
+"elements": [1.0000000000000004, -7.523163845262643e-37, 2.1684043449710103e-19, 0.0, -8.648698754590241e-21, 0.9992042734817446, 0.03988508312413418, 0.0, -2.166678888131416e-19, -0.03988508312413418, 0.9992042734817448, 0.0, 1.65945665742e-06, 3.64334981661316, 1.7101343e-09, 1.0]
 },
 "preRotation": [-5.747366972400856, -1.987846675914698e-16, 0.0],
 "scale": [1.0000000000000002, 1.0, 1.0000000000000004],
@@ -2895,7 +2949,7 @@ metadata/extras = {
 "eulerOrder": "ZYX",
 "inheritType": 1.0,
 "parentMatrixWorld": {
-"elements": [1.0, 5.5511150000000004e-17, 3.85186e-34, 0.0, -5.539736057405585e-17, 0.997950129754508, -0.0639963946090751, 0.0, -3.55251353939962e-18, 0.0639963946090751, 0.997950129754508, 0.0, 0.00618121594493903, 3.1264304229472373, -2.034610702139616e-09, 1.0]
+"elements": [1.0, 5.551115e-17, 3.85186e-34, 0.0, -5.539736057405585e-17, 0.997950129754508, -0.0639963946090751, 0.0, -3.55251353939962e-18, 0.0639963946090751, 0.997950129754508, 0.0, 0.00618121594493903, 3.1264304229472373, -2.034610702139616e-09, 1.0]
 },
 "preRotation": [14.382888804473216, -1.9878466759146975e-16, 0.0],
 "scale": [1.0, 1.0000000000000002, 1.0000000000000002],
@@ -2911,7 +2965,7 @@ metadata/extras = {
 "eulerOrder": "ZYX",
 "inheritType": 1.0,
 "parentMatrixWorld": {
-"elements": [1.0, 4.814825e-35, 3.4694469519536134e-18, 0.0, -8.618127458657826e-19, 0.968657388347981, 0.24840061191323423, 0.0, -3.3607054234912502e-18, -0.24840061191323423, 0.968657388347981, 0.0, 0.01245183252974513, 3.0849575900620607, 7.462646e-09, 1.0]
+"elements": [1.0, 4.814825e-35, 3.4694469519536134e-18, 0.0, -8.6181274586578255e-19, 0.968657388347981, 0.24840061191323423, 0.0, -3.3607054234912502e-18, -0.24840061191323423, 0.968657388347981, 0.0, 0.01245183252974513, 3.0849575900620607, 7.462646e-09, 1.0]
 },
 "preRotation": [-2.64320095119e-06, -1.192708017427229e-15, -6.361109426278554e-15],
 "scale": [1.0000000000000002, 1.0, 1.0],
@@ -2963,7 +3017,7 @@ metadata/extras = {
 "eulerOrder": "ZYX",
 "inheritType": 1.0,
 "parentMatrixWorld": {
-"elements": [1.0, 1.2037061999999999e-35, -3.4694469519536134e-18, 0.0, -7.613328466978056e-20, 0.9997592030801176, -0.0219439252780362, 0.0, 3.4686115198138867e-18, 0.0219439252780362, 0.9997592030801176, 0.0, -0.00083120268305059, 3.537454603125248, -1.826379e-08, 1.0]
+"elements": [1.0, 1.2037062e-35, -3.4694469519536134e-18, 0.0, -7.613328466978056e-20, 0.9997592030801176, -0.0219439252780362, 0.0, 3.4686115198138867e-18, 0.0219439252780362, 0.9997592030801176, 0.0, -0.00083120268305059, 3.537454603125248, -1.826379e-08, 1.0]
 },
 "preRotation": [-2.5479795186022893, 4.969616689786744e-17, 0.0],
 "scale": [1.0, 1.0, 1.0000000000000002],
@@ -2983,7 +3037,7 @@ metadata/extras = {
 },
 "preRotation": [-4.735462324795199e-08, 0.0, 3.180554564132728e-15],
 "scale": [1.0000000000000002, 1.0000000000000002, 1.0],
-"translation": [-3.70111604564e-05, 1.933092385139318, 8.978418009064622e-10]
+"translation": [-3.70111604564e-05, 1.933092385139318, 8.97841800906462e-10]
 }
 }
 
@@ -3128,3 +3182,11 @@ libraries = {
 }
 autoplay = "Idle"
 playback_default_blend_time = 0.2
+
+[node name="Interaction_controller" parent="." instance=ExtResource("8_adgam")]
+unique_name_in_owner = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(17.227768, 0, 0, 0, 11.7705555, 0, 0, 0, 1, 0, 0, -6.716219)
+visible = false
+mesh = SubResource("QuadMesh_g1hv4")
