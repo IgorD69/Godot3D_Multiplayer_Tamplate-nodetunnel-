@@ -1,6 +1,0 @@
-res://addons/nodetunnel/demo/node_tunnel_demo.tscn
-res://Shaders/PlayerPosteraziation.gdshader
-res://interaction/interaction_component.gd
-res://objects/Ball.tscn
-res://objects/cube.tscn
-res://interaction/interaction_component(Save).gd
